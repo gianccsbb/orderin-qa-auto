@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0} body{width:1600px;height:1000px;font-family:Inter,sans-serif;background:#F4F1EA;padding:56px 60px;color:#2b2420;display:flex;flex-direction:column;justify-content:center}
+.top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:34px}
+.top p{color:#5c4d45;font-size:16px} h1{font-family:Lora,serif;font-size:40px;color:#0F4C5C;margin-top:4px}
+.grid{display:grid;grid-template-columns:1.05fr 1fr;gap:36px}
+.card{background:#fff;border-radius:18px;padding:24px 26px}
+.term{background:#1E1E24;color:#E8E6E3;border-radius:18px;padding:22px 24px;font:14px/1.75 "DejaVu Sans Mono",monospace;margin-bottom:20px;white-space:pre}
+.g{color:#7BD88F}.y{color:#F4C04D}.d{color:#8F8FA3}
+h2{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#0F4C5C;margin-bottom:12px}
+table{width:100%;border-collapse:collapse;font-size:14.5px} td{padding:9px 6px;border-bottom:1px dashed #e5d7b8;vertical-align:middle}
+.sev{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.c{background:#F6C9C2;color:#7A1E12}.h{background:#F9DDC6;color:#7A3E0E}.m{background:#F7EDB9;color:#5E4C05}.l{background:#DDEBE0;color:#1F5130}.f{background:#D7E7EA;color:#0F4C5C}
+.ev img{display:block;height:520px;max-width:100%;margin:0 auto;border-radius:12px;border:1px solid #eee}
+.ev p{font-size:14px;color:#5c4d45;margin-top:12px;line-height:1.5}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.chips span{background:#E3EEF0;color:#0F4C5C;font-weight:600;font-size:13px;padding:6px 12px;border-radius:999px}
+</style></head><body>
+<div class="top"><div><p>QA test automation · Concept project</p><h1>Finding the bugs before customers do</h1></div><p>Playwright · pytest · Page Objects · GitHub Actions</p></div>
+<div class="grid">
+<div>
+<div class="term"><span class="d">$ python -m pytest</span>
+tests/test_cart.py     <span class="g">......</span><span class="y">x</span>
+tests/test_checkout.py <span class="g">......</span><span class="y">xx</span><span class="g">..</span>
+tests/test_coupon.py   <span class="g">....</span><span class="y">x</span>
+tests/test_menu.py     <span class="g">......</span><span class="y">x</span>
+<span class="g">24 passed</span>, <span class="y">5 xfailed</span> in 15s</div>
+<div class="card"><h2>Bug reports</h2><table>
+<tr><td><b>BUG-002</b></td><td>Coupon can be re-applied; discount stacks to 100%</td><td><span class="sev c">Critical</span></td></tr>
+<tr><td><b>BUG-004</b></td><td>Total not updated after removing an item</td><td><span class="sev h">High</span></td></tr>
+<tr><td><b>BUG-003</b></td><td>Phone field accepts letters</td><td><span class="sev m">Medium</span></td></tr>
+<tr><td><b>BUG-001</b></td><td>Price sort orders values as text</td><td><span class="sev l">Low</span></td></tr>
+<tr><td><b>BUG-005</b></td><td>Mobile layout overflow covered checkout button</td><td><span class="sev f">Fixed</span></td></tr>
+</table></div>
+</div>
+<div class="card ev"><h2>Evidence · BUG-002</h2><img src="evidence/BUG-002-coupon-stacks.png" alt="">
+<p>Three clicks on “Aplicar” with the same coupon: 30% off instead of 10%. Every bug report has steps to reproduce, expected vs actual, severity, a screenshot and the likely cause in the code.</p>
+<div class="chips"><span>29 automated tests</span><span>boundary values</span><span>mobile 390px run</span><span>test plan</span><span>GitHub Actions CI</span></div></div>
+</div></body></html>

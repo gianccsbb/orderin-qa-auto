@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quebra-Mar · Pedido para retirada (staging)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="env-banner" data-testid="env-banner">STAGING v0.9 · ambiente de teste · build com defeitos semeados para a demonstração de QA</div>
+  <header class="top">
+    <h1>Quebra-Mar <span>Pedido para retirada</span></h1>
+    <button class="cart-btn" data-testid="cart-button" aria-controls="cart" aria-expanded="false">
+      Carrinho <span class="badge" data-testid="cart-count">0</span>
+    </button>
+  </header>
+
+  <main class="layout">
+    <section aria-labelledby="menu-h">
+      <h2 id="menu-h">Cardápio</h2>
+      <div class="filters">
+        <label>Categoria
+          <select data-testid="category-filter">
+            <option value="all">Todas</option>
+            <option value="cafes">Cafés</option>
+            <option value="padaria">Padaria</option>
+            <option value="doces">Doces</option>
+          </select>
+        </label>
+        <label>Ordenar
+          <select data-testid="sort">
+            <option value="default">Destaques</option>
+            <option value="name">Nome (A–Z)</option>
+            <option value="price-asc">Preço (menor → maior)</option>
+          </select>
+        </label>
+      </div>
+      <ul class="products" data-testid="product-list"></ul>
+    </section>
+
+    <aside id="cart" class="cart" aria-labelledby="cart-h">
+      <h2 id="cart-h">Seu carrinho</h2>
+      <ul class="cart-items" data-testid="cart-items"></ul>
+      <p class="empty" data-testid="cart-empty">Carrinho vazio.</p>
+
+      <form class="coupon" data-testid="coupon-form">
+        <label for="coupon">Cupom</label>
+        <div class="row">
+          <input id="coupon" data-testid="coupon-input" autocomplete="off">
+          <button type="submit" data-testid="coupon-apply">Aplicar</button>
+        </div>
+        <p class="msg" data-testid="coupon-msg" role="status"></p>
+      </form>
+
+      <dl class="totals">
+        <dt>Subtotal</dt><dd data-testid="subtotal">R$ 0,00</dd>
+        <dt>Desconto</dt><dd data-testid="discount">R$ 0,00</dd>
+        <dt class="grand">Total</dt><dd class="grand" data-testid="total">R$ 0,00</dd>
+      </dl>
+      <button class="primary" data-testid="checkout-button" disabled>Finalizar pedido</button>
+    </aside>
+  </main>
+
+  <dialog class="checkout" data-testid="checkout-dialog" aria-labelledby="co-h">
+    <form method="dialog" data-testid="checkout-form" novalidate>
+      <h2 id="co-h">Dados para retirada</h2>
+      <label for="name">Nome</label>
+      <input id="name" data-testid="name-input" autocomplete="name">
+      <p class="err" data-testid="name-error"></p>
+
+      <label for="phone">Telefone (WhatsApp)</label>
+      <input id="phone" data-testid="phone-input" inputmode="tel" placeholder="(81) 9 9999-9999">
+      <p class="err" data-testid="phone-error"></p>
+
+      <label for="pickup">Horário de retirada</label>
+      <input id="pickup" type="time" data-testid="pickup-input">
+      <p class="hint">Funcionamos das 7h às 19h.</p>
+      <p class="err" data-testid="pickup-error"></p>
+
+      <div class="actions">
+        <button type="button" data-testid="checkout-cancel">Voltar</button>
+        <button type="submit" class="primary" data-testid="place-order">Confirmar pedido</button>
+      </div>
+    </form>
+  </dialog>
+
+  <section class="confirmation" data-testid="confirmation" hidden>
+    <h2>Pedido confirmado!</h2>
+    <p>Número do pedido: <strong data-testid="order-number"></strong></p>
+    <p>Total: <strong data-testid="order-total"></strong></p>
+    <p>Retirada às <strong data-testid="order-pickup"></strong>. Avisamos pelo WhatsApp quando estiver pronto.</p>
+    <button class="primary" data-testid="new-order">Fazer novo pedido</button>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
